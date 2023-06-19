@@ -17,10 +17,9 @@ const performCalculations = async () => {
           const worker = new Worker(filePath, {
             workerData: { num: idx + 10 }
           });
-          // uncomment to check check for rejected worker
-          // if (idx == 2) {
-          //   reject();
-          // }
+          // uncomment to check for rejected worker
+          // const e = Math.random()
+          // if(e < 0.5) throw new Error('Error worker');
           worker.on('message', resolve);
           worker.on('error', reject);
           worker.on('exit', (code) => {
